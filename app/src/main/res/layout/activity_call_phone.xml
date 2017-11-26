@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.abc.fus.myapp.CallPhone" >
+
+   <EditText android:id="@+id/et_Phone"
+       android:hint="电话号码"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content" android:digits="1234567890." android:maxLength="11" />
+
+    <Button android:id="@+id/btn_CallPhone"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="拨打"
+        android:onClick="CallPhone"/>
+</LinearLayout>
