@@ -12,21 +12,19 @@ public class ReturnData {
     private String encoding;
 
     /**
-     *
-     * @param red
-     *            返回的html信息
-     * @param hcp
-     *            更新后的HttpConnProp，特别是cookie
-     * @param encoding
-     *            返回的string的编码
+     * @param red      返回的html信息
+     * @param hcp      更新后的HttpConnProp，特别是cookie
+     * @param encoding 返回的string的编码
      */
     public ReturnData(String red, HttpConnProp hcp, String encoding) {
         this.htmlData = red;
         this.updatedProp = hcp;
         this.encoding = encoding;
     }
+
     /**
-     *  把结果的string 转byte[]
+     * 把结果的string 转byte[]
+     *
      * @return byte[]数组
      */
     public byte[] getReturnByteData() {
@@ -64,4 +62,4 @@ public class ReturnData {
         this.encoding = e;
     }
 
-};
+}

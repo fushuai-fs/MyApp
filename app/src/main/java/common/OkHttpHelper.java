@@ -6,7 +6,11 @@ package common;
 
 import java.io.IOException;
 
-import okhttp3.*;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 /* 简单的http封装 */
 public class OkHttpHelper {
@@ -43,9 +47,9 @@ public class OkHttpHelper {
 //        String SignId = "Baitour";
 
         RequestBody formBody = new FormBody.Builder()
-                .add("SignId","9CC6161EAC0C3AB79A0EA6BD051F49CA").add("data", data)
+                .add("SignId", "9CC6161EAC0C3AB79A0EA6BD051F49CA").add("data", data)
                 .build();
-        Request request = new Request.Builder().addHeader("Company","Baitour")
+        Request request = new Request.Builder().addHeader("Company", "Baitour")
                 .url(url)
                 .post(formBody)
                 .build();
@@ -54,7 +58,7 @@ public class OkHttpHelper {
         if (response.isSuccessful()) {
             return response.body().string();
         } else {
-           // throw new IOException("Unexpected code " + response);
+            // throw new IOException("Unexpected code " + response);
             return "";
         }
     }

@@ -1,81 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.abc.fus.myapp.LoginActivity"
     android:gravity="center|center_horizontal|center_vertical"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="com.abc.fus.myapp.LoginActivity">
+
     <TextView
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:paddingLeft="20dp"
-        android:layout_height="wrap_content" android:text="公司ID" />
+        android:text="公司ID" />
+
     <EditText
-        android:id="@+id/et_Company" android:hint="Company ID"
-        android:paddingLeft="20dp" android:paddingRight="20dp"
+        android:id="@+id/et_Company"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Company ID"
         android:paddingLeft="20dp"
-        android:layout_height="wrap_content" android:text="用户名" />
-    <EditText
-        android:id="@+id/et_UserName" android:hint="Login Name"
-android:paddingLeft="20dp" android:paddingRight="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:paddingRight="20dp" />
+
     <TextView
-        android:layout_width="match_parent" android:paddingLeft="20dp"
-        android:layout_height="wrap_content" android:text="密码" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:text="用户名" />
+
     <EditText
-        android:id="@+id/et_Password" android:hint="Password"
+        android:id="@+id/et_UserName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Login Name"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:text="密码" />
+
+    <EditText
+        android:id="@+id/et_Password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
         android:inputType="textPassword"
-        android:paddingLeft="20dp" android:paddingRight="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp" />
 
     <!--<Button android:id="@+id/btn_Login"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_marginLeft="30dp" android:layout_marginRight="30dp"-->
-        <!--android:layout_height="wrap_content" android:text="登  录CallPhone" />-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_marginLeft="30dp" android:layout_marginRight="30dp"-->
+    <!--android:layout_height="wrap_content" android:text="登  录CallPhone" />-->
 
     <!--<Button android:id="@+id/btn_Login2"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_marginLeft="30dp" android:layout_marginRight="30dp"-->
-        <!--android:layout_height="wrap_content" android:text="登  录ListViews" />-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_marginLeft="30dp" android:layout_marginRight="30dp"-->
+    <!--android:layout_height="wrap_content" android:text="登  录ListViews" />-->
 
     <!--<Button android:id="@+id/btn_Login3"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_marginLeft="30dp" android:layout_marginRight="30dp"-->
-        <!--android:layout_height="wrap_content" android:text="登  录Arrays" />-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_marginLeft="30dp" android:layout_marginRight="30dp"-->
+    <!--android:layout_height="wrap_content" android:text="登  录Arrays" />-->
 
     <!--<Button android:id="@+id/btn_Login4"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_marginLeft="30dp" android:layout_marginRight="30dp"-->
-        <!--android:layout_height="wrap_content" android:text="登  录Inflates" />-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_marginLeft="30dp" android:layout_marginRight="30dp"-->
+    <!--android:layout_height="wrap_content" android:text="登  录Inflates" />-->
 
     <!--<Button android:id="@+id/btn_Login5"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_marginLeft="30dp" android:layout_marginRight="30dp"-->
-        <!--android:layout_height="wrap_content" android:text="登  录SimplesAdapter" />-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_marginLeft="30dp" android:layout_marginRight="30dp"-->
+    <!--android:layout_height="wrap_content" android:text="登  录SimplesAdapter" />-->
 
     <!--<Button android:id="@+id/btn_Login6"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_marginLeft="30dp" android:layout_marginRight="30dp"-->
-        <!--android:layout_height="wrap_content" android:text="登  录1" />-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_marginLeft="30dp" android:layout_marginRight="30dp"-->
+    <!--android:layout_height="wrap_content" android:text="登  录1" />-->
 
     <!--<Button android:id="@+id/btn_Register"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_marginLeft="30dp" android:layout_marginRight="30dp"-->
-        <!--android:layout_height="wrap_content" android:text="注  册" />-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_marginLeft="30dp" android:layout_marginRight="30dp"-->
+    <!--android:layout_height="wrap_content" android:text="注  册" />-->
 
     <!--<Button android:id="@+id/btn_showData"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_marginLeft="30dp" android:layout_marginRight="30dp"-->
-        <!--android:layout_height="wrap_content" android:text="showData" />-->
-    <Button android:id="@+id/btn_sign"
-    android:layout_width="match_parent" android:backgroundTint="@color/colorPrimary"
-    android:layout_marginLeft="30dp" android:layout_marginRight="30dp"
-    android:layout_height="wrap_content" android:text="登 录" />
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_marginLeft="30dp" android:layout_marginRight="30dp"-->
+    <!--android:layout_height="wrap_content" android:text="showData" />-->
+    <Button
+        android:id="@+id/btn_sign"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:text="登 录" />
 </LinearLayout>

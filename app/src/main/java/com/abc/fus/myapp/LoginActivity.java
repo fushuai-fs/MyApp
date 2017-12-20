@@ -1,26 +1,19 @@
 package com.abc.fus.myapp;
 
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-
 import java.io.IOException;
 
 import common.OkHttpHelper;
 import common.SQLiteHelper;
-import common.StringHelper;
 
 public class LoginActivity extends AppCompatActivity {
     SQLiteHelper myHelper;
@@ -28,39 +21,39 @@ public class LoginActivity extends AppCompatActivity {
     EditText company;
     EditText userName;
     EditText password;
-    Button btn_Login2;  Button btn_Login3;
-    Button btn_Login4;Button btn_Login5;
+    Button btn_Login2;
+    Button btn_Login3;
+    Button btn_Login4;
+    Button btn_Login5;
     Button btn_Login6;
     Button btn_Register;
 
     Button btn_showData;
     Button btn_sign;
 
-      Handler myHandler = new Handler(){
-          public void handleMessage(Message msg) {
-          switch (msg.what) {
-              case 1:
-                  if(msg.obj.toString()!="")
-                  {
-                      Intent intent = new Intent();
-                      intent.setClass(getApplicationContext(), OrderListActivity.class);
-                      startActivity(intent);
-                      finish();
-                  }else
-                  {
-                      Toast.makeText(getApplicationContext(),"登录失败，请重新登录！",Toast.LENGTH_LONG).show();
-                  }
-                  break;
-          }
+    Handler myHandler = new Handler() {
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case 1:
+                    if (msg.obj.toString() != "") {
+                        Intent intent = new Intent();
+                        intent.setClass(getApplicationContext(), OrderListActivity.class);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "登录失败，请重新登录！", Toast.LENGTH_LONG).show();
+                    }
+                    break;
+            }
             //  showMsg(msg.toString());
-          super.handleMessage(msg);
-      }   };
+            super.handleMessage(msg);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login2);
-
 
 
         btn_sign = (Button) findViewById(R.id.btn_sign);
@@ -79,17 +72,15 @@ public class LoginActivity extends AppCompatActivity {
         btn_sign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String _company =company.getText().toString().trim();
-                String _userName=userName.getText().toString().trim();
-                String _password =password.getText().toString().trim();
-                if(_company.equals("") || _userName.equals("") || _password.equals(""))
-                {
+                String _company = company.getText().toString().trim();
+                String _userName = userName.getText().toString().trim();
+                String _password = password.getText().toString().trim();
+                if (_company.equals("") || _userName.equals("") || _password.equals("")) {
                     Toast.makeText(getApplicationContext(), "用户名或密码不能为空！", Toast.LENGTH_SHORT).show();
                     return;
+                } else {
+                    onServerLogin(_company, _userName, _password);
                 }
-                else{
-                        onServerLogin(_company,_userName,_password);
-                    }
             }
         });
 //        btn_Login.setOnClickListener(new View.OnClickListener() {
@@ -198,7 +189,6 @@ public class LoginActivity extends AppCompatActivity {
 //        });
 
 
-
 //        btn_Register.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -216,21 +206,21 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
     }
-    private void showMsg(final  String msg){
+
+    private void showMsg(final String msg) {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(getApplication(),msg,Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplication(), msg, Toast.LENGTH_LONG).show();
             }
         });
     }
 
-//    protected boolean onLogin(String userName,String password)
+    //    protected boolean onLogin(String userName,String password)
 //    {
 //         myHelper =new SQLiteHelper(getApplicationContext());
 //        SQLiteDatabase db = myHelper.getReadableDatabase();
@@ -244,28 +234,28 @@ public class LoginActivity extends AppCompatActivity {
 //            return  false;
 //        }
 //    }
-    protected void onServerLogin( String Company, String userName, String password)
-    {
-        final String _company =Company;
-        final String _userName =userName;
-        final String _password=password;
-        Thread thread = new Thread(){
+    protected void onServerLogin(String Company, String userName, String password) {
+        final String _company = Company;
+        final String _userName = userName;
+        final String _password = password;
+        Thread thread = new Thread() {
 
-           public void run(){
-               String response="";
-               String path = "http://localhost:54038/api/Login/Login";
-               path = "http://172.16.1.51:91/data/SupplierHandler.ashx";
-               String json = "{\"Company\":\""+_company+"\",\"UserName\":\""+_userName+"\",\"PassWord\":\""+_password+"\"}";
-               try {
-                   response = OkHttpHelper.HttpPost(path, json);
-               } catch (IOException e) {
-                  showMsg(e.toString()); e.printStackTrace();
-               }
-               Message msg = new Message();
-               msg.what=1;
-               msg.obj=response;
-               myHandler.sendMessage(msg);
-           }
+            public void run() {
+                String response = "";
+                String path = "http://localhost:54038/api/Login/Login";
+                path = "http://172.16.1.51:91/data/SupplierHandler.ashx";
+                String json = "{\"Company\":\"" + _company + "\",\"UserName\":\"" + _userName + "\",\"PassWord\":\"" + _password + "\"}";
+                try {
+                    response = OkHttpHelper.HttpPost(path, json);
+                } catch (IOException e) {
+                    showMsg(e.toString());
+                    e.printStackTrace();
+                }
+                Message msg = new Message();
+                msg.what = 1;
+                msg.obj = response;
+                myHandler.sendMessage(msg);
+            }
         };
         thread.start();
 

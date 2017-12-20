@@ -5,9 +5,9 @@ package com.abc.fus.myapp;
  */
 
 public class Account {
-    private  Integer ID;
-    private  String UserName;
-    private  String Phone;
+    private Integer ID;
+    private String UserName;
+    private String Phone;
 
     public Integer getID() {
         return ID;

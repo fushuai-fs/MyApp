@@ -16,17 +16,14 @@ import common.AppInstrumentedActivity;
 import common.JPushUtil;
 
 public class MainActivity extends AppInstrumentedActivity {
-    // 是否后台
-    public static boolean isForeground = false;
-
-    //for receive customer msg from jpush server
-    private MessageReceiver mMessageReceiver;
     public static final String MESSAGE_RECEIVED_ACTION = "com.abc.fus.myapp.MESSAGE_RECEIVED_ACTION";
     public static final String KEY_TITLE = "title";
     public static final String KEY_MESSAGE = "message";
     public static final String KEY_EXTRAS = "extras";
-
-
+    // 是否后台
+    public static boolean isForeground = false;
+    //for receive customer msg from jpush server
+    private MessageReceiver mMessageReceiver;
     private TextView mTextMessage;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -56,7 +53,7 @@ public class MainActivity extends AppInstrumentedActivity {
 
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-      //  navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        //  navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
     @Override
@@ -78,6 +75,16 @@ public class MainActivity extends AppInstrumentedActivity {
         LocalBroadcastManager.getInstance(this).unregisterReceiver(mMessageReceiver);
         super.onDestroy();
     }
+
+    private void setCostomMsg(final String msg) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(getApplication(), msg, Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
     public class MessageReceiver extends BroadcastReceiver {
 
         @Override
@@ -93,18 +100,9 @@ public class MainActivity extends AppInstrumentedActivity {
                     }
                     setCostomMsg(showMsg.toString());
                 }
-            } catch (Exception e){
+            } catch (Exception e) {
             }
         }
-    }
-
-    private void setCostomMsg(final  String msg){
-         runOnUiThread(new Runnable() {
-             @Override
-             public void run() {
-                 Toast.makeText(getApplication(),msg,Toast.LENGTH_LONG).show();
-             }
-         });
     }
 
 

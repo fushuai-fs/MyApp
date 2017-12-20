@@ -1,7 +1,7 @@
 package com.abc.fus.myapp;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +19,8 @@ public class Inflates extends AppCompatActivity {
         lv.setAdapter(new myListAdapter());
 
     }
-    public  class  myListAdapter extends BaseAdapter {
+
+    public class myListAdapter extends BaseAdapter {
         @Override
         public int getCount() {
             return 7;
@@ -38,14 +39,14 @@ public class Inflates extends AppCompatActivity {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             View view;
-            if(convertView==null){
+            if (convertView == null) {
                 // 获取inflate 的三种方式
-               // view = View.inflate(getApplicationContext(),R.layout.items,null);
+                // view = View.inflate(getApplicationContext(),R.layout.items,null);
                 //view = LayoutInflater.from(getApplicationContext()).inflate(R.layout.items,null);
                 LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-                view = inflater.inflate(R.layout.items,null);
-            }else{
-                view=convertView;
+                view = inflater.inflate(R.layout.items, null);
+            } else {
+                view = convertView;
             }
 
             System.out.println(position);

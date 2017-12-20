@@ -3,7 +3,14 @@ package common;
 /**
  * Created by FUSHUAI on 2017/9/28.
  */
-import java.io.*;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
@@ -15,8 +22,14 @@ import java.util.concurrent.Executors;
  * http请求后返回的东西的包装类
  *
  * @author zzy
- *
- *
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * http链接的相关属性类
+ * <p>
+ * <p>
+ * Cookie的封装
  */
 
 /**
@@ -74,19 +87,6 @@ public class HttpHelper {
         if (!executorService.isShutdown())
             executorService.shutdown();
         executorService = Executors.newFixedThreadPool(RunningThreadCount);
-    }
-
-    /**
-     *
-     * 用于异步通信的回调接口
-     *
-     */
-    public interface AsynExecuteCallBack {
-        public void beforeExecute();
-
-        public void afterExecute(ReturnData rData);
-
-        public void exceptionOccored(Exception e);
     }
 
     /**
@@ -190,7 +190,7 @@ public class HttpHelper {
      *            访问属性的类对象
      * @param encoding
      *            编码字符串 例如 ASCII gb2312 utf-8 等
-     * @return 如果出现错误返回null,否则返回页面的String对象
+     * @return 如果出现错误返回null, 否则返回页面的String对象
      */
     public static String getHtml(String strUrl, HttpConnProp hcp,
                                  String encoding) {
@@ -345,6 +345,7 @@ public class HttpHelper {
         return new ReturnData(temp, updtedHttpConnProp, encoding);
 
     }
+
     /**
      * 同步方法：
      * 从网络上下载文件 缓存4kb
@@ -354,8 +355,9 @@ public class HttpHelper {
      * 保存地址 如g://1.rar (注意是覆蓋的)
      */
     public static void downLoadFile(final String strUrl, final String fileURL) {
-        downLoadFile(strUrl, fileURL,4096);
+        downLoadFile(strUrl, fileURL, 4096);
     }
+
     /**
      * 同步方法: 从网络上下载文件
      *
@@ -366,7 +368,7 @@ public class HttpHelper {
      * @bufferLength
      * 下载缓存的大小，byte单位 ，建议4096 (4KB)
      */
-    public static void downLoadFile(final String strUrl, final String fileURL,final int bufferLength) {
+    public static void downLoadFile(final String strUrl, final String fileURL, final int bufferLength) {
         BufferedInputStream in = null;
         BufferedOutputStream out = null;
         try {
@@ -391,27 +393,6 @@ public class HttpHelper {
     }
 
     /**
-     *
-     * 文件异步下载的接口
-     *
-     */
-    interface asynDownLoadCallBack {
-        public void beforeDownLoad();// 下载文件之前
-        /**
-         * 如果服务器不指定文件的长度，则fileLength = 0  要用到这几个参数的话要自己在回调接口处判断
-         * @param hasDownedByte
-         * 已经下载的字节数
-         * @param FileLength
-         * 文件总字节数 若服务器无此信息即为0
-         */
-        public void duringDownLoad(long hasDownedByte, long FileLength);// 下载文件之中
-
-        public void downLoadFinished();// 下载文件之后
-
-        public void downLoadErrorOccured(Exception e);// 出错后
-    }
-
-    /**
      * 异步方法:
      * 以4KB缓存从网上下载文件
      * @param strUrl
@@ -423,8 +404,9 @@ public class HttpHelper {
      */
     public static void AsynDownLoadFile(final String strUrl,
                                         final String fileURL, final asynDownLoadCallBack callback) {
-        AsynDownLoadFile(strUrl, fileURL, callback,4096);
+        AsynDownLoadFile(strUrl, fileURL, callback, 4096);
     }
+
     /**
      * 异步方法:
      * 从网络上异步下载文件
@@ -435,7 +417,7 @@ public class HttpHelper {
      * @param bufferLength
      */
     public static void AsynDownLoadFile(final String strUrl,
-                                        final String fileURL, final asynDownLoadCallBack callback,final int bufferLength) {
+                                        final String fileURL, final asynDownLoadCallBack callback, final int bufferLength) {
         executorService.execute(new Runnable() {
 
             @Override
@@ -471,8 +453,7 @@ public class HttpHelper {
                 } catch (Exception e) {
                     e.printStackTrace();
                     callback.downLoadErrorOccured(e);
-                }
-                finally{
+                } finally {
 
                     try {
                         bis.close();
@@ -486,5 +467,35 @@ public class HttpHelper {
             }
         });
 
+    }
+
+    /**
+     * 用于异步通信的回调接口
+     */
+    public interface AsynExecuteCallBack {
+        void beforeExecute();
+
+        void afterExecute(ReturnData rData);
+
+        void exceptionOccored(Exception e);
+    }
+
+    /**
+     * 文件异步下载的接口
+     */
+    interface asynDownLoadCallBack {
+        void beforeDownLoad();// 下载文件之前
+
+        /**
+         * 如果服务器不指定文件的长度，则fileLength = 0  要用到这几个参数的话要自己在回调接口处判断
+         *
+         * @param hasDownedByte 已经下载的字节数
+         * @param FileLength    文件总字节数 若服务器无此信息即为0
+         */
+        void duringDownLoad(long hasDownedByte, long FileLength);// 下载文件之中
+
+        void downLoadFinished();// 下载文件之后
+
+        void downLoadErrorOccured(Exception e);// 出错后
     }
 }

@@ -33,9 +33,7 @@ public class JPushUtil {
             return true;
         if (s.length() == 0)
             return true;
-        if (s.trim().length() == 0)
-            return true;
-        return false;
+        return s.trim().length() == 0;
     }
 
     // 校验Tag Alias 只能是数字,英文字母和中文
@@ -77,8 +75,7 @@ public class JPushUtil {
         }
     }
 
-    public static void showToast(final String toast, final Context context)
-    {
+    public static void showToast(final String toast, final Context context) {
         new Thread(new Runnable() {
 
             @Override
@@ -104,14 +101,14 @@ public class JPushUtil {
         } catch (Exception e) {
             Logger.e(JPushUtil.class.getSimpleName(), e.getMessage());
         }
-        if (isReadableASCII(ret)){
+        if (isReadableASCII(ret)) {
             return ret;
         } else {
             return imei;
         }
     }
 
-    private static boolean isReadableASCII(CharSequence string){
+    private static boolean isReadableASCII(CharSequence string) {
         if (TextUtils.isEmpty(string)) return false;
 //        Pattern p = Pattern.compile("[\\x20-\\x7E]+");
 //        return p.matcher(string).matches();

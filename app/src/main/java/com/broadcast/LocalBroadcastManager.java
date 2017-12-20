@@ -19,27 +19,16 @@ import common.Logger;
  */
 
 public class LocalBroadcastManager {
+    static final int MSG_EXEC_PENDING_BROADCASTS = 1;
     private static final String TAG = "JPush";
     private static final boolean DEBUG = false;
-    private final Context mAppContext;
-    private final HashMap<BroadcastReceiver, ArrayList<IntentFilter>> mReceivers = new HashMap<BroadcastReceiver, ArrayList<IntentFilter>>();
-    private final HashMap<String, ArrayList<LocalBroadcastManager.ReceiverRecord>> mActions = new HashMap<String, ArrayList<LocalBroadcastManager.ReceiverRecord>> ();
-    private final ArrayList<LocalBroadcastManager.BroadcastRecord> mPendingBroadcasts = new ArrayList<LocalBroadcastManager.BroadcastRecord>();
-    static final int MSG_EXEC_PENDING_BROADCASTS = 1;
-    private final Handler mHandler;
     private static final Object mLock = new Object();
     private static LocalBroadcastManager mInstance;
-
-    public static LocalBroadcastManager getInstance(Context context) {
-        Object var1 = mLock;
-        synchronized (mLock) {
-            if (mInstance == null) {
-                mInstance = new LocalBroadcastManager(context.getApplicationContext());
-            }
-
-            return mInstance;
-        }
-    }
+    private final Context mAppContext;
+    private final HashMap<BroadcastReceiver, ArrayList<IntentFilter>> mReceivers = new HashMap<BroadcastReceiver, ArrayList<IntentFilter>>();
+    private final HashMap<String, ArrayList<LocalBroadcastManager.ReceiverRecord>> mActions = new HashMap<String, ArrayList<LocalBroadcastManager.ReceiverRecord>>();
+    private final ArrayList<LocalBroadcastManager.BroadcastRecord> mPendingBroadcasts = new ArrayList<LocalBroadcastManager.BroadcastRecord>();
+    private final Handler mHandler;
 
     private LocalBroadcastManager(Context context) {
         this.mAppContext = context;
@@ -55,6 +44,17 @@ public class LocalBroadcastManager {
 
             }
         };
+    }
+
+    public static LocalBroadcastManager getInstance(Context context) {
+        Object var1 = mLock;
+        synchronized (mLock) {
+            if (mInstance == null) {
+                mInstance = new LocalBroadcastManager(context.getApplicationContext());
+            }
+
+            return mInstance;
+        }
     }
 
     public void registerReceiver(BroadcastReceiver receiver, IntentFilter filter) {
@@ -226,7 +226,7 @@ public class LocalBroadcastManager {
                 LocalBroadcastManager.BroadcastRecord var7 = brs[var6];
 
                 for (int j = 0; j < var7.receivers.size(); ++j) {
-                    ((LocalBroadcastManager.ReceiverRecord) var7.receivers.get(j)).receiver.onReceive(this.mAppContext, var7.intent);
+                    var7.receivers.get(j).receiver.onReceive(this.mAppContext, var7.intent);
                 }
             }
         }

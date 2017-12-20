@@ -10,26 +10,29 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 
 public class SQLiteHelper extends SQLiteOpenHelper {
-    private final static String DB_NAME="myTest.db";
+    private final static String DB_NAME = "myTest.db";
     private final static int VERSION = 1;
     private SQLiteDatabase db;
 
     public SQLiteHelper(Context context) {
-        super(context, DB_NAME,null, VERSION);
+        super(context, DB_NAME, null, VERSION);
     }
-    public SQLiteHelper(Context context,String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context,  name, factory, version);
+
+    public SQLiteHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+        super(context, name, factory, version);
     }
 
     public SQLiteHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version, DatabaseErrorHandler errorHandler) {
         super(context, name, factory, version, errorHandler);
     }
-/* 初始化数据  */
+
+    /* 初始化数据  */
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table account(_id integer primary key autoincrement,UserName varchar(20),Phone varchar(20),Password varchar(50) ) ");
     }
-/*  升级操作 */
+
+    /*  升级操作 */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 

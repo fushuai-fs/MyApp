@@ -9,7 +9,6 @@ import java.util.Set;
  */
 
 
-
 public class Cookies {
 
     private HashMap<String, String> hashMap;
@@ -19,7 +18,6 @@ public class Cookies {
     }
 
     /**
-     *
      * @return 返回一个空的Cookies对象
      */
     public static final Cookies getEmptyCookieObj() {
@@ -28,7 +26,6 @@ public class Cookies {
     }
 
     /**
-     *
      * 清除 Cookies 里面的所有 Cookie 记录
      */
     public void clear() {
@@ -36,15 +33,9 @@ public class Cookies {
     }
 
     /**
-     *
      * 根据 key 获取对应的 Cookie 值
      *
-     *
-     *
-     * @param key
-     *
-     *            要获取的 Cookie 值的 key
-     *
+     * @param key 要获取的 Cookie 值的 key
      * @return 如果不存在 key 则返回 null
      */
     public String getCookie(String key) {
@@ -52,18 +43,10 @@ public class Cookies {
     }
 
     /**
-     *
      * 在 Cookies 里设置一个 Cookie
      *
-     *
-     *
-     * @param key
-     *
-     *            要设置的 Cookie 的 key
-     *
-     * @param value
-     *
-     *            要设置的 Cookie 的 value
+     * @param key   要设置的 Cookie 的 key
+     * @param value 要设置的 Cookie 的 value
      */
 
     public void putCookie(String key, String value) {
@@ -73,10 +56,8 @@ public class Cookies {
     }
 
     /**
-     *
      * 在 Cookies 里面设置传入的 cookies
      * 格式  key=value
-     *
      *
      * @param cookies
      */
@@ -98,7 +79,6 @@ public class Cookies {
     }
 
     /**
-     *
      * 获取 Cookies 的字符串
      */
 

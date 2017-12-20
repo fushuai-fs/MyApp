@@ -1,13 +1,12 @@
 package com.abc.fus.myapp;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+
 import org.junit.Test;
 
 import common.OkHttpHelper;
 import common.StringHelper;
-
-import com.alibaba.fastjson.*;
-
-import static org.junit.Assert.assertEquals;
 
 /**
  * Created by FUSHUAI on 2017/10/1.
@@ -20,7 +19,7 @@ public class okHttpTest {
         String path = "http://localhost:38047/TestHandler.ashx";
         String json = "{\"abc\":\"12345\"}";
 
-        JSONObject jsobj =  JSON.parseObject(json);
+        JSONObject jsobj = JSON.parseObject(json);
 
         System.out.println(jsobj.get("abc"));
 

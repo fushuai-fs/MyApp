@@ -1,73 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" android:layout_centerHorizontal="true">
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true">
 
-    <LinearLayout android:layout_width="match_parent"
-        android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:layout_centerVertical="true">
-        <TextView android:id="@+id/OrderID"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true">
+
+        <TextView
+            android:id="@+id/OrderID"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="OrderID" />
 
-        <TextView android:id="@+id/HotelName"
+        <TextView
+            android:id="@+id/HotelName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:text="HotelName" />
     </LinearLayout>
 
-    <LinearLayout  android:layout_width="match_parent"
-        android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:layout_centerVertical="true" >
-        <TextView android:id="@+id/RoomName"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true">
+
+        <TextView
+            android:id="@+id/RoomName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="RoomName" />
 
-        <TextView android:id="@+id/OrderStatus"
+        <TextView
+            android:id="@+id/OrderStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:text="OrderStatus" />
     </LinearLayout>
-    <LinearLayout android:layout_width="match_parent"
-        android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:layout_centerVertical="true" >
-        <TextView android:id="@+id/CheckIn"
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true">
+
+        <TextView
+            android:id="@+id/CheckIn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="CheckIn" />
 
-        <TextView android:id="@+id/CheckOut"
+        <TextView
+            android:id="@+id/CheckOut"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:text="CheckOut" />
     </LinearLayout>
 
-    <LinearLayout android:layout_width="match_parent" android:background="@color/colorlock"
-        android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:layout_centerVertical="true" >
-        <TextView android:id="@+id/Amount"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@color/colorlock">
+
+        <TextView
+            android:id="@+id/Amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Amount" />
 
-        <TextView android:id="@+id/Rooms"
+        <TextView
+            android:id="@+id/Rooms"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:text="Rooms" />
     </LinearLayout>
     <!--<TextView-->
-        <!--android:id="@+id/tv_phone"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="2333"-->
-        <!--android:layout_weight="1"-->
-        <!--android:textColor="#ff0000" />-->
+    <!--android:id="@+id/tv_phone"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="2333"-->
+    <!--android:layout_weight="1"-->
+    <!--android:textColor="#ff0000" />-->
 
 
 </TableLayout>
